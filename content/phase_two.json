@@ -1,0 +1,162 @@
+{
+  "schema_version": 1,
+  "species": {
+    "human": {"name": "Humana", "size": "Medium", "speed": 30},
+    "elf": {"name": "Elfa", "size": "Medium", "speed": 30},
+    "orc": {"name": "Orca", "size": "Medium", "speed": 30},
+    "goliath": {"name": "Goliat", "size": "Medium", "speed": 35},
+    "halfling": {"name": "Mediana", "size": "Small", "speed": 30},
+    "tiefling": {"name": "Tiefling", "size": "Medium", "speed": 30},
+    "dragonborn": {"name": "Dracónida", "size": "Medium", "speed": 30}
+  },
+  "backgrounds": {
+    "soldier": {"name": "Soldado", "skills": ["Athletics", "Intimidation"]},
+    "noble": {"name": "Noble", "skills": ["History", "Persuasion"]},
+    "sage": {"name": "Sabia", "skills": ["Arcana", "History"]},
+    "acolyte": {"name": "Acólita", "skills": ["Insight", "Religion"]},
+    "farmer": {"name": "Granjera", "skills": ["Animal Handling", "Nature"]}
+  },
+  "classes": {
+    "fighter": {"name": "Guerrera", "base_archetype": "vanguard", "attack_ability": "str", "attack_bonus": 4, "damage_die": 8, "weapon": "Hacha de batalla", "hit_die": 10},
+    "ranger": {"name": "Exploradora", "base_archetype": "scout", "attack_ability": "dex", "attack_bonus": 5, "damage_die": 6, "weapon": "Espada corta", "hit_die": 10},
+    "wizard": {"name": "Maga", "base_archetype": "scholar", "attack_ability": "dex", "attack_bonus": 3, "damage_die": 6, "weapon": "Bastón de roble", "hit_die": 6, "cantrip": {"name": "Rayo de fuego", "kind": "attack", "ability": "int", "damage_die": 10, "range_ft": 120}},
+    "cleric": {"name": "Clériga", "base_archetype": "scholar", "attack_ability": "str", "attack_bonus": 2, "damage_die": 6, "weapon": "Maza", "hit_die": 8, "cantrip": {"name": "Llama sagrada", "kind": "save", "ability": "wis", "save_ability": "dex", "damage_die": 8, "range_ft": 60}}
+  },
+  "archetypes": {
+    "vanguard": {
+      "name": "Vanguardia",
+      "hp": 12,
+      "abilities": {"str": 15, "dex": 14, "con": 14, "int": 12, "wis": 13, "cha": 14},
+      "skills": ["Athletics", "Stealth", "Perception", "Investigation", "Persuasion"],
+      "masteries": ["Topple"],
+      "weapon": "Hacha de batalla",
+      "armor": "Cuero",
+      "attack_ability": "str",
+      "attack_bonus": 4,
+      "damage_die": 8
+    },
+    "scout": {
+      "name": "Exploradora",
+      "hp": 10,
+      "abilities": {"str": 12, "dex": 16, "con": 12, "int": 12, "wis": 15, "cha": 12},
+      "skills": ["Stealth", "Perception", "Investigation", "Survival"],
+      "masteries": [],
+      "weapon": "Espada corta",
+      "armor": "Cuero",
+      "attack_ability": "dex",
+      "attack_bonus": 5,
+      "damage_die": 6
+    },
+    "scholar": {
+      "name": "Erudita",
+      "hp": 9,
+      "abilities": {"str": 10, "dex": 12, "con": 12, "int": 16, "wis": 15, "cha": 14},
+      "skills": ["Investigation", "Perception", "Persuasion", "Medicine", "Arcana"],
+      "masteries": [],
+      "weapon": "Bastón de roble",
+      "armor": "Cuero",
+      "attack_ability": "dex",
+      "attack_bonus": 3,
+      "damage_die": 6
+    }
+  },
+  "factions": {
+    "wardens": {"name": "Custodios del umbral", "alignment": "Lawful Neutral", "goal": "Mantener cerrado el archivo mientras la ruta sea insegura.", "minimum": -100, "maximum": 100, "relations": {"wayfarers": -15}},
+    "wayfarers": {"name": "Cartógrafas del camino", "alignment": "Neutral Good", "goal": "Compartir rutas seguras y conocimiento regional.", "minimum": -100, "maximum": 100, "relations": {"wardens": 0}}
+  },
+  "npcs": {
+    "mira": {"name": "Mira, cartógrafa", "faction": "wayfarers"},
+    "guard": {"name": "Custodio del umbral", "faction": "wardens"},
+    "farmer": {"name": "Iria, granjera", "faction": "wayfarers"},
+    "town_crier": {"name": "Tomas, pregonero", "faction": "wayfarers"},
+    "innkeeper": {"name": "Sena, posadera", "faction": "wayfarers"},
+    "stablehand": {"name": "Oren, mozo de cuadra", "faction": "wayfarers"}
+  },
+  "enemies": {
+    "guard": {"name": "Custodio del umbral", "size": "Medium", "hp": 10, "ac": 14, "attack_bonus": 4, "damage_die": 6, "str": 14, "dex": 12, "con": 16, "range": 1, "behavior": "aggressive", "study_dc": 12, "study_clue": "Protege la reja y se apoya en su armadura para resistir los golpes.", "loot_table": "warden_cache"},
+    "watcher": {"name": "Vigía de las ruinas", "size": "Medium", "hp": 6, "ac": 12, "attack_bonus": 3, "damage_die": 4, "str": 8, "dex": 14, "con": 10, "range": 1, "behavior": "aggressive", "study_dc": 11, "study_clue": "Su guardia es frágil; la iniciativa y un ataque certero pueden acabar rápido con el encuentro.", "loot_table": "scavenged_supply"},
+    "raider": {"name": "Saqueador de la calzada", "size": "Medium", "hp": 9, "ac": 13, "attack_bonus": 3, "damage_die": 6, "str": 14, "dex": 12, "con": 14, "range": 1, "behavior": "aggressive", "study_dc": 12, "study_clue": "Lucha de cerca y abandona su posición para perseguir a su presa.", "loot_table": "scavenged_supply"},
+    "slinger": {"name": "Honda de la calzada", "size": "Medium", "hp": 7, "ac": 12, "attack_bonus": 4, "damage_die": 4, "str": 8, "dex": 14, "con": 10, "range": 4, "behavior": "skirmisher", "study_dc": 12, "study_clue": "Mantiene distancia y retrocede si queda trabado en cuerpo a cuerpo.", "loot_table": "scavenged_supply"}
+  },
+  "items": {
+    "tonic": {"name": "Tónico de campo", "kind": "consumable"},
+    "buckler": {"name": "Broquel de madera", "kind": "shield"},
+    "sealed_ledger": {"name": "Registro sellado", "kind": "quest"},
+    "trail_token": {"name": "Ficha de la calzada", "kind": "quest"},
+    "scrap": {"name": "Chatarra útil", "kind": "material"}
+  },
+  "quests": {
+    "sealed_ledger": {"name": "El registro sellado", "next": "causeway_markers"},
+    "causeway_markers": {"name": "Marcas en la ceniza", "next": "restore_beacon"},
+    "restore_beacon": {"name": "La señal de la calzada", "next": ""}
+  },
+  "regions": {
+    "causeway": {"name": "Calzada de ceniza", "unlock_quest": "sealed_ledger", "encounter_table": "causeway_patrol"},
+    "beacon": {"name": "Faro quebrado", "unlock_quest": "restore_beacon", "encounter_table": "beacon_watch"}
+  },
+  "biomes": {
+    "grassland": {"name": "Pradera", "difficult": false, "water": false, "encounter_table": "overland_patrol"},
+    "forest": {"name": "Bosque", "difficult": false, "water": false, "encounter_table": "overland_patrol"},
+    "dense_forest": {"name": "Bosque denso", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "paved_road": {"name": "Camino empedrado", "difficult": false, "water": false, "encounter_table": "overland_patrol"},
+    "dirt_road": {"name": "Camino de tierra", "difficult": false, "water": false, "encounter_table": "overland_patrol"},
+    "hill": {"name": "Colina", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "mountain": {"name": "Montaña", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "volcano": {"name": "Volcán", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "swamp": {"name": "Pantano", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "coast": {"name": "Costa", "difficult": false, "water": false, "encounter_table": "overland_patrol"},
+    "river": {"name": "Río", "difficult": true, "water": false, "encounter_table": "overland_patrol"},
+    "ocean": {"name": "Océano", "difficult": false, "water": true, "encounter_table": "overland_patrol"},
+    "lake": {"name": "Lago", "difficult": false, "water": true, "encounter_table": "overland_patrol"},
+    "snow": {"name": "Nieve", "difficult": true, "water": false, "encounter_table": "overland_patrol"}
+  },
+  "mounts": {
+    "donkey": {"name": "Burro", "price": 8, "bonus_min": 0.3, "bonus_max": 1.2},
+    "horse": {"name": "Caballo", "price": 75, "bonus_min": 0.8, "bonus_max": 3.0},
+    "camel": {"name": "Camello", "price": 50, "bonus_min": 1.0, "bonus_max": 2.0}
+  },
+  "points_of_interest": {
+    "farm": {"name": "Granja", "category": "settlement", "description": "Campos de cultivo rodean una casa de piedra. Un camino de tierra conduce al pozo y al granero.", "interior": {"buildings": [{"name": "Casa de piedra", "description": "La vivienda de Iria, junto al pozo comunal."}, {"name": "Granero", "description": "Guarda herramientas y la cosecha salvada."}], "npcs": ["farmer"], "quests": ["sealed_ledger"], "conversations": [{"id": "farmer_rumor", "npc": "farmer", "label": "Preguntar por la cosecha"}]}, "interactions": [{"id": "inspect_fields", "label": "Inspeccionar los campos", "skill": "Nature", "ability": "int", "dc": 10, "success": "Las hileras muestran que la cosecha se perdió por una plaga que avanza desde el arroyo.", "failure": "Las marcas del suelo no te permiten identificar qué dañó la cosecha."}]},
+    "village": {"name": "Pueblo", "category": "settlement", "description": "Un grupo de casas comparte una plaza, un pozo y un tablón con avisos locales.", "interior": {"buildings": [{"name": "Plaza del pozo", "description": "El pozo y el tablón reúnen a quienes cruzan el pueblo."}], "npcs": ["town_crier"], "quests": ["causeway_markers"]}, "interactions": [{"id": "read_notices", "label": "Revisar el tablón de avisos", "skill": "Investigation", "ability": "int", "dc": 11, "success": "Un aviso reciente menciona luces azules cerca de la calzada al anochecer.", "failure": "La lluvia borró la tinta de los avisos más recientes.", "success_effect": {"type": "reputation", "faction": "wayfarers", "amount": 1}}]},
+    "town": {"name": "Villa", "category": "settlement", "description": "Los puestos del mercado se alinean junto a una empalizada y una pequeña guardia.", "interior": {"buildings": [{"name": "Mercado", "description": "Varios puestos venden provisiones junto a la empalizada."}, {"name": "Puesto de guardia", "description": "La guardia vigila la entrada y la calzada."}], "npcs": ["guard"], "quests": ["causeway_markers"]}, "interactions": [{"id": "market_rumors", "label": "Preguntar por rumores del mercado", "skill": "Persuasion", "ability": "cha", "dc": 12, "success": "Una comerciante recuerda carretas vacías que regresaron de la mina esta semana.", "failure": "Los comerciantes están ocupados y no consigues una pista fiable.", "success_effect": {"type": "reputation", "faction": "wayfarers", "amount": 1}}]},
+    "city": {"name": "Ciudad", "category": "settlement", "description": "Tras las murallas se extienden calles concurridas, talleres y edificios de varios pisos.", "interior": {"buildings": [{"name": "Registro de viajeros", "description": "Un archivo municipal conserva las rutas recientes."}, {"name": "Posada del norte", "description": "Los viajeros descansan antes de cruzar las murallas."}], "npcs": ["mira"], "quests": ["restore_beacon"]}, "interactions": [{"id": "travel_records", "label": "Consultar el registro de viajeros", "skill": "Investigation", "ability": "int", "dc": 13, "success": "El registro sitúa a un grupo de cartógrafos en la posada antes de que partieran al norte.", "failure": "Los libros de entrada son demasiados y no encuentras un registro concluyente.", "success_effect": {"type": "reputation", "faction": "wayfarers", "amount": 1}}]},
+    "mine": {"name": "Mina", "category": "site", "description": "Rieles oxidados entran en una galería oscura. El aire trae olor a hierro y piedra húmeda.", "interior": {"buildings": [{"name": "Boca de mina", "description": "Una galería de extracción con rieles y puntales gastados."}], "quests": ["sealed_ledger"]}, "interactions": [{"id": "inspect_veins", "label": "Examinar las vetas de mineral", "skill": "Investigation", "ability": "int", "dc": 12, "success": "La veta principal está intacta, pero las huellas recientes se alejan de la entrada.", "failure": "La roca suelta cubre cualquier rastro útil en la pared."}]},
+    "cemetery": {"name": "Cementerio", "category": "site", "description": "Lápidas desiguales rodean una capilla en ruinas. Alguien ha dejado flores frescas junto a la entrada.", "interior": {"buildings": [{"name": "Capilla en ruinas", "description": "Una cripta comunica con las tumbas más antiguas."}], "quests": ["restore_beacon"]}, "interactions": [{"id": "read_epitaphs", "label": "Leer las lápidas antiguas", "skill": "History", "ability": "int", "dc": 12, "success": "Una inscripción relaciona las tumbas con el antiguo faro de la región.", "failure": "La erosión ha borrado las fechas y los nombres."}]},
+    "burrow": {"name": "Madriguera", "category": "site", "description": "Un túnel bajo las raíces muestra marcas recientes y huellas pequeñas que entran en la tierra.", "interior": {"buildings": [{"name": "Túnel bajo las raíces", "description": "La galería se estrecha hacia una cámara con marcas recientes."}], "quests": ["causeway_markers"]}, "interactions": [{"id": "follow_tracks", "label": "Seguir las huellas", "skill": "Survival", "ability": "wis", "dc": 12, "success": "Las huellas describen un circuito entre la madriguera y la orilla del arroyo.", "failure": "El suelo húmedo mezcla las pisadas hasta volverlas ilegibles."}]},
+    "inn": {"name": "Posada", "category": "settlement", "description": "La luz cálida de las ventanas promete una cama, una comida y noticias de otros viajeros.", "interior": {"buildings": [{"name": "Salón común", "description": "Una chimenea calienta las mesas de los viajeros."}, {"name": "Habitaciones", "description": "La posada ofrece camas para pasar la noche."}], "npcs": ["innkeeper"], "quests": ["causeway_markers"]}, "services": ["long_rest"], "interactions": [{"id": "listen_rumors", "label": "Escuchar las conversaciones", "skill": "Insight", "ability": "wis", "dc": 11, "success": "Dos viajeros comentan que evitaron el paso del norte por un derrumbe.", "failure": "El ruido de la sala ahoga cualquier conversación interesante."}]},
+    "dungeon": {"name": "Mazmorra", "category": "dungeon", "description": "Una escalera desciende bajo una puerta sellada. Se oyen corrientes de aire en las profundidades.", "interior": {"buildings": [{"name": "Umbral sellado", "description": "Un mecanismo oculto cierra la entrada a las galerías."}], "quests": ["sealed_ledger"]}, "interactions": [{"id": "inspect_seal", "label": "Estudiar la entrada sellada", "skill": "Investigation", "ability": "int", "dc": 13, "success": "El mecanismo cede desde el otro lado; una corriente de aire revela una abertura secundaria.", "failure": "No encuentras cómo abrir la puerta sin herramientas."}]},
+    "castle": {"name": "Castillo", "category": "settlement", "description": "Un puente levadizo cerrado protege el patio. Estandartes gastados cuelgan sobre la muralla.", "interior": {"buildings": [{"name": "Puente levadizo", "description": "El acceso al patio permanece cerrado hasta recibir autorización."}, {"name": "Torre de guardia", "description": "Desde la torre se vigilan las rutas de la región."}], "npcs": ["guard"], "quests": ["restore_beacon"]}, "interactions": [{"id": "request_audience", "label": "Solicitar audiencia al guardia", "skill": "Persuasion", "ability": "cha", "dc": 13, "success": "El guardia acepta entregar tu mensaje al castellano y pide que regreses mañana.", "failure": "El guardia mantiene el puente cerrado y no acepta tu petición."}]},
+    "stable": {"name": "Establo", "category": "service", "description": "Caballos, burros y camellos descansan en puestos limpios junto a la tienda del cuidador.", "interior": {"buildings": [{"name": "Puestos", "description": "Las monturas descansan junto a los bebederos."}, {"name": "Tienda del cuidador", "description": "El mozo atiende las monturas y ofrece animales en venta."}], "npcs": ["stablehand"]}, "services": ["mounts"], "interactions": [{"id": "calm_mount", "label": "Calmar a una montura inquieta", "skill": "Animal Handling", "ability": "wis", "dc": 10, "success": "La montura se tranquiliza y el cuidador te saluda con una sonrisa.", "failure": "El animal retrocede y el cuidador te pide dejarle espacio."}]}
+  },
+  "encounters": {
+    "causeway_patrol": [
+      {"enemy": "raider", "weight": 3},
+      {"enemy": "slinger", "weight": 2},
+      {"enemy": "none", "weight": 1}
+    ],
+    "beacon_watch": [
+      {"enemy": "slinger", "weight": 2},
+      {"enemy": "none", "weight": 1}
+    ],
+    "overland_patrol": [
+      {"enemy": "raider", "weight": 2},
+      {"enemy": "slinger", "weight": 1},
+      {"enemy": "none", "weight": 5}
+    ]
+  },
+  "loot_tables": {
+    "warden_cache": [
+      {"item": "tonic", "weight": 1, "quantity": 1},
+      {"item": "scrap", "weight": 2, "quantity": 1}
+    ],
+    "scavenged_supply": [
+      {"item": "tonic", "weight": 1, "quantity": 1},
+      {"item": "scrap", "weight": 3, "quantity": 1}
+    ]
+  },
+  "dialogue": {
+    "share_route": {"requires_quest": "sealed_ledger", "requires_min_reputation": {"wayfarers": 0}, "relationship_delta": {"mira": 1}, "reputation_delta": {"wayfarers": 1}},
+    "persuade_guard": {"requires_quest": "", "requires_min_reputation": {"wardens": -3}, "relationship_delta": {"guard": 1}, "reputation_delta": {"wardens": 1}},
+    "farmer_rumor": {"text": "Iria cuenta que la plaga llegó desde el arroyo; días antes vio huellas que bajaban hacia las ruinas.", "requires_quest": "", "requires_min_reputation": {}, "relationship_delta": {"farmer": 1}, "reputation_delta": {"wayfarers": 1}}
+  }
+}

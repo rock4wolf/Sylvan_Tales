@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://c2kp5yjr8qc8u"]
+
+[ext_resource type="Script" uid="uid://7viypt66fhvc" path="res://scripts/d20_roll_view.gd" id="1_d20"]
+
+[node name="D20RollView" type="SubViewportContainer" unique_id=840285744]
+custom_minimum_size = Vector2(190, 150)
+script = ExtResource("1_d20")
